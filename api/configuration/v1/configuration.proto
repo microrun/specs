@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package api.configuration.v1;
+
+message Configuration {
+    repeated Container containers = 1;
+}
+
+message Container {
+    string name = 1;
+    string image = 2;
+}
+
+message ApplyConfigurationRequest {
+    Configuration configuration = 1;
+}
+
+message ApplyConfigurationResponse {
+    bool applied = 1;
+    repeated string errors = 2;
+}
+
+service ConfigurationService {
+    rpc ApplyConfiguration(ApplyConfigurationRequest) returns (ApplyConfigurationResponse);
+}

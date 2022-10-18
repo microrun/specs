@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package api.status.v1;
+
+message VersionRequest {
+
+}
+
+message VersionResponse {
+    string version = 1;
+}
+
+
+service StatusService {
+    rpc Version(VersionRequest) returns (VersionResponse);
+}
