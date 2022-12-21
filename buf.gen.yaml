@@ -2,7 +2,7 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: microrun.org/specs-go/generated
+    default: github.com/microrun/specs-go/generated
 plugins:
   - name: go
     out: ../specs-go/generated
