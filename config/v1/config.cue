@@ -1,14 +1,26 @@
-provider:
-	[name=_]:
+providers: {
+	[name=_]: {
 		provider: string
-		region: string
+	}
 
-provider:
-	aws:
-		provider: "https://github.com/microrun/provider-aws"
+	[name="aws"]: {
+		provider: "https://github.com/microrun/provider-aws.git"
+	}
 
-apps:
-	[name=_]:
+	[name="azure"]: {
+		provider: "https://github.com/microrun/provider-azure.git"
+	}
+
+	[name="hcloud"]: {
+		provider: "https://github.com/microrun/provider-hcloud.git"
+	}
+}
+
+apps: {
+	[name=_]: {
 		instanceType?: string
-		build:
+		build: {
 			image: string
+		}
+	}
+}
