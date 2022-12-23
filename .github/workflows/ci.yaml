@@ -22,6 +22,8 @@ jobs:
       - uses: actions/checkout@3ba5ee6fac7e0e30e2ea884e236f282d3a775891
       - name: Install Protoc
         uses: arduino/setup-protoc@ab6203da1c3118e4406048171b09238ad31ad73e
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-go@991a6a2c3e9d4605a6fc1784d647ca2bc0e88be9
         with:
           go-version: 1.18
