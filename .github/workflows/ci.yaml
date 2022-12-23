@@ -10,27 +10,27 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: bufbuild/buf-setup-action@v0.6.0
-      - uses: bufbuild/buf-lint-action@v1
+      - uses: actions/checkout@3ba5ee6fac7e0e30e2ea884e236f282d3a775891
+      - uses: bufbuild/buf-setup-action@4b89ef3fddf743121a6b1fbf5013eb4f2bc5ca1f
+      - uses: bufbuild/buf-lint-action@e847e92216a1cd8970ce724d3b9d210279519779
 
   deploy:
     name: Generate libraries
     needs: [lint]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3ba5ee6fac7e0e30e2ea884e236f282d3a775891
       - name: Install Protoc
-        uses: arduino/setup-protoc@v1
-      - uses: actions/setup-go@v2
+        uses: arduino/setup-protoc@ab6203da1c3118e4406048171b09238ad31ad73e
+      - uses: actions/setup-go@991a6a2c3e9d4605a6fc1784d647ca2bc0e88be9
         with:
           go-version: 1.18
-      - uses: bufbuild/buf-setup-action@v0.6.0
+      - uses: bufbuild/buf-setup-action@4b89ef3fddf743121a6b1fbf5013eb4f2bc5ca1f
       - name: Installing protoc-gen-go and protoc-gen-go-grpc
         run: |
           go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
           go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
-      - uses: webfactory/ssh-agent@v0.5.4
+      - uses: webfactory/ssh-agent@209e2d72ff4a448964d26610aceaaf1b3f8764c6
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
       - name: Generate, commit and push
