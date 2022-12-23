@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@3ba5ee6fac7e0e30e2ea884e236f282d3a775891
       - uses: bufbuild/buf-setup-action@4b89ef3fddf743121a6b1fbf5013eb4f2bc5ca1f
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: bufbuild/buf-lint-action@e847e92216a1cd8970ce724d3b9d210279519779
 
   deploy:
@@ -28,6 +30,8 @@ jobs:
         with:
           go-version: 1.18
       - uses: bufbuild/buf-setup-action@4b89ef3fddf743121a6b1fbf5013eb4f2bc5ca1f
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Installing protoc-gen-go and protoc-gen-go-grpc
         run: |
           go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
