@@ -18,7 +18,6 @@ providers: {
 
 apps: {
 	[name=_]: {
-		instanceType?: string
 		build: {
 			image: string
 		}
