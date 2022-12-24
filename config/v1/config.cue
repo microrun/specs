@@ -23,6 +23,8 @@ package v1
 }
 
 #Provider: {
+	// URI pointing to the provider implementation
+	// Supported protocols: file:// and git over https://
 	provider: string
 }
 
