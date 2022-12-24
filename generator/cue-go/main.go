@@ -52,7 +52,7 @@ func main() {
 		panic(err)
 	}
 
-	err = ioutil.WriteFile(destination, []byte(stripComments(goCode)), os.ModePerm)
+	err = ioutil.WriteFile(destination, []byte(replaceGeneratorComment(goCode)), os.ModePerm)
 
 	if err != nil {
 		panic(err)
@@ -74,8 +74,8 @@ func generateGoTypes(openApiSchema []byte) (string, error) {
 	})
 }
 
-func stripComments(code string) string {
-	re := regexp.MustCompile("(?s)//.*?\n|/\\*.*?\\*/")
-	stripped := re.ReplaceAllString(code, "")
+func replaceGeneratorComment(code string) string {
+	re := regexp.MustCompile("//.*\n//.*\n//.*")
+	stripped := re.ReplaceAllString(code, "// Code generated from "+module+". DO NOT EDIT.")
 	return stripped
 }
