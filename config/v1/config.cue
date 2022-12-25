@@ -30,11 +30,13 @@ package v1
 }
 
 #App: {
-	provider?: {
-		use?: string
-		...
-	}
+	provider?: #AppProvider
 	build: #BuildImage | #BuildDockerfile
+}
+
+#AppProvider: {
+	use?: string
+	...
 }
 
 #BuildImage: {
