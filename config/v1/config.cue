@@ -26,9 +26,14 @@ package v1
 	// URI pointing to the provider implementation
 	// Supported protocols: file:// and git over https://
 	provider: string
+	...
 }
 
 #App: {
+	provider?: {
+		use?: string
+		...
+	}
 	build: #BuildImage | #BuildDockerfile
 }
 
